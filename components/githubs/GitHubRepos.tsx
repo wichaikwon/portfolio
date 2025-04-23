@@ -15,9 +15,9 @@ const StarredRepos: React.FC = () => {
   }, [])
 
   return (
-    <div className=" max-w-6xl mx-auto ">
+    <div className="container mx-auto " id="projects">
       <h1 className="text-3xl font-bold mb-8 text-center">
-        Starred Repositories ⭐
+        Projects ⭐
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 ">
         {repos.map((repo) => (
@@ -33,16 +33,25 @@ const StarredRepos: React.FC = () => {
         <p className="mt-2 text-sm text-gray-300">{repo.description}</p>
 
         <div className="mt-4 flex justify-between items-center text-sm text-gray-400">
-          <span className="flex items-center gap-1">
-            <span className="w-2 h-2 bg-yellow-400 rounded-full inline-block"></span>
+            <span className="flex items-center gap-1">
+            <span
+              className={`w-2 h-2 rounded-full inline-block ${
+              repo.language === 'TypeScript'
+                ? 'bg-blue-500'
+                : repo.language === 'Go'
+                ? 'bg-sky-400'
+                : 'bg-yellow-400'
+              }`}
+            ></span>
             {repo.language || 'Unknown'}
-          </span>
+            </span>
           <span className="flex items-center gap-1">
             <FaCodeBranch />
           </span>
           <span className="flex items-center gap-1">
             <FaStar />
           </span>
+          <span className="text-gray-400">{repo.size} KB</span>
         </div>
           </div>
         ))}

@@ -7,6 +7,7 @@ export interface GithubRepo {
   html_url: string
   description: string
   language: string
+  size: number
 }
 
 export const fetchGithubRepos = async (username: string): Promise<GithubRepo[]> => {
